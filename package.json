@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "zip": "npm run build && mkdir -p build && (cd dist && zip -r ../build/pr-commentor-$(node -p \"require('../package.json').version\").zip .)",
-    "zip:only": "mkdir -p build && (cd dist && zip -r ../build/pr-commentor-$(node -p \"require('../package.json').version\").zip .)"
+    "publish:ext": "node scripts/publish-ext.mjs"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.0.0-beta.23",
