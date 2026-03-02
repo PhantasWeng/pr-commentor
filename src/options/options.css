@@ -1,0 +1,577 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg:            #f4f4f5;
+  --surface:       #ffffff;
+  --border:        #e4e4e7;
+  --border-hover:  #d1d1d6;
+  --text:          #18181b;
+  --text-secondary:#52525b;
+  --text-muted:    #a1a1aa;
+  --accent:        #2563eb;
+  --accent-bg:     #eff6ff;
+  --accent-border: #bfdbfe;
+  --info-bg:       #eff6ff;
+  --info-border:   #bfdbfe;
+  --info-text:     #1d4ed8;
+  --success:       #16a34a;
+  --error:         #dc2626;
+  --shadow-sm:     0 1px 2px rgba(0,0,0,0.05);
+  --shadow:        0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
+  --radius:        10px;
+  --radius-sm:     6px;
+  --transition:    140ms ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Page ───────────────────────────────── */
+
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+}
+
+/* ── Header ─────────────────────────────── */
+
+.page-header {
+  padding: 40px 0 32px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.brand-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Geist', sans-serif;
+  font-size: 12px;
+  color: var(--text-muted);
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.lang-toggle:hover {
+  border-color: var(--border-hover);
+  background: #f1f1f3;
+}
+
+.lang-sep {
+  color: var(--border-hover);
+}
+
+.lang-opt {
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.lang-opt--active {
+  color: var(--accent);
+}
+
+/* ── Form layout ─────────────────────────── */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .grid-2 { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+
+@media (min-width: 480px) {
+  .grid-2--sm { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+
+.grid-2--sm {
+  margin-bottom: 18px;
+}
+
+/* ── Card ───────────────────────────────── */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: #fafafa;
+}
+
+.card-header h2 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+/* ── Fields ─────────────────────────────── */
+
+.field {
+  margin-bottom: 16px;
+}
+
+.field:last-child { margin-bottom: 0; }
+
+.field > label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+/* ── Callout ─────────────────────────────── */
+
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: var(--info-bg);
+  border: 1px solid var(--info-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  margin-top: 8px;
+  color: var(--info-text);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.callout svg { flex-shrink: 0; margin-top: 1px; }
+
+/* ── Password reveal wrapper ─────────────── */
+
+.input-reveal {
+  position: relative;
+}
+
+.input-reveal input {
+  padding-right: 34px;
+}
+
+.reveal-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  border-radius: 3px;
+  transition: color var(--transition);
+}
+
+.reveal-btn:hover { color: var(--text-secondary); }
+
+/* ── Hint ───────────────────────────────── */
+
+.hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.hint a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hint a:hover { text-decoration: underline; }
+
+code {
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 11.5px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0 4px;
+  color: var(--text-secondary);
+}
+
+/* ── Inputs ─────────────────────────────── */
+
+input[type='password'],
+input[type='text'],
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 7px 10px;
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 12.5px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  appearance: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  line-height: 1.5;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted);
+}
+
+input:hover, select:hover, textarea:hover {
+  border-color: var(--border-hover);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+  cursor: pointer;
+}
+
+/* ── Provider radio cards ────────────────── */
+
+.provider-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.provider-option { cursor: pointer; display: block; }
+
+.provider-option input[type='radio'] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.provider-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 10px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+  background: var(--surface);
+  text-align: center;
+}
+
+.provider-option:hover .provider-label {
+  border-color: var(--border-hover);
+  background: #fafafa;
+}
+
+.provider-option input:checked ~ .provider-label {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.provider-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  transition: color var(--transition);
+}
+
+.provider-option input:checked ~ .provider-label .provider-name {
+  color: var(--accent);
+}
+
+.provider-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ── Style radio cards ───────────────────── */
+
+.style-group { display: flex; flex-direction: column; gap: 7px; }
+
+.style-option { cursor: pointer; display: block; }
+
+.style-option input[type='radio'] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.style-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+  background: var(--surface);
+  position: relative;
+}
+
+/* Selection indicator */
+.style-label::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.style-option:hover .style-label {
+  border-color: var(--border-hover);
+  background: #fafafa;
+}
+
+.style-option input:checked ~ .style-label {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.style-option input:checked ~ .style-label::after {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.style-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  padding-right: 24px;
+  transition: color var(--transition);
+}
+
+.style-option input:checked ~ .style-label .style-title {
+  color: var(--accent);
+}
+
+.style-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  padding-right: 24px;
+}
+
+/* ── Input with inline button ────────────── */
+
+.input-with-btn {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.input-with-btn input {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Secondary button ────────────────────── */
+
+.btn-secondary {
+  font-family: 'Geist', sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 6px 14px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.btn-secondary:hover {
+  background: #f4f4f5;
+  border-color: var(--border-hover);
+}
+
+.btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary--icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btn-secondary--icon svg {
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.btn-secondary--icon.scanning svg {
+  animation: spin 0.8s linear infinite;
+}
+
+.field--test {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.test-result {
+  font-size: 12.5px;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.test-result:not(:empty) { opacity: 1; }
+.test-result--success { color: var(--success); }
+.test-result--error   { color: var(--error); }
+
+/* ── Actions ─────────────────────────────── */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#save-btn {
+  font-family: 'Geist', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  padding: 8px 18px;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition), box-shadow var(--transition);
+  letter-spacing: -0.01em;
+}
+
+#save-btn:hover {
+  background: #1d4ed8;
+  box-shadow: 0 1px 3px rgba(37,99,235,0.3), 0 0 0 3px rgba(37,99,235,0.12);
+}
+
+#save-btn:active { background: #1e40af; }
+
+#save-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ── Status ─────────────────────────────── */
+
+.status-msg {
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.status-msg:not(:empty) { opacity: 1; }
+
+.status-msg--success { color: var(--success); }
+.status-msg--error   { color: var(--error); }
+
+/* ── Animations ──────────────────────────── */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-header { animation: fadeUp 0.3s ease both; }
+.card        { animation: fadeUp 0.3s ease both; }
+.grid-2 > .card:nth-child(1) { animation-delay: 0.04s; }
+.grid-2 > .card:nth-child(2) { animation-delay: 0.08s; }
+form > .card                 { animation-delay: 0.12s; }
+.actions                     { animation: fadeUp 0.3s 0.16s ease both; }

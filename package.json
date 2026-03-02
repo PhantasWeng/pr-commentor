@@ -1,0 +1,19 @@
+{
+  "name": "pr-commentor",
+  "version": "1.0.0",
+  "description": "Chrome extension to generate AI-powered PR summaries on GitHub",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "zip": "npm run build && mkdir -p build && (cd dist && zip -r ../build/pr-commentor-$(node -p \"require('../package.json').version\").zip .)",
+    "zip:only": "mkdir -p build && (cd dist && zip -r ../build/pr-commentor-$(node -p \"require('../package.json').version\").zip .)"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.0.0-beta.23",
+    "@types/chrome": "^0.0.268",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12"
+  }
+}

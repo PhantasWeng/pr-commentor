@@ -1,0 +1,34 @@
+.pr-commentor-btn {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  padding: 2px 6px;
+  margin-left: 2px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 18px;
+  cursor: pointer;
+  border: 1px solid var(--color-border-default, #d0d7de);
+  border-radius: 4px;
+  background-color: var(--color-canvas-subtle, #f6f8fa);
+  color: var(--color-fg-muted, #57606a);
+  white-space: nowrap;
+  transition: background-color 0.1s ease, border-color 0.1s ease, color 0.1s ease;
+}
+
+.pr-commentor-btn:hover {
+  background-color: var(--color-canvas-default, #ffffff);
+  border-color: var(--color-border-muted, #afb8c1);
+  color: var(--color-fg-default, #24292f);
+}
+
+.pr-commentor-btn:disabled,
+.pr-commentor-btn--loading {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pr-commentor-btn:focus-visible {
+  outline: 2px solid var(--color-accent-emphasis, #0969da);
+  outline-offset: 2px;
+}

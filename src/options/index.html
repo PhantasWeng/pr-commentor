@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PR Commentor — Settings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./options.css" />
+  </head>
+  <body>
+    <div class="page">
+
+      <header class="page-header">
+        <div class="brand">
+          <span class="brand-dot"></span>
+          <span class="brand-name">PR Commentor</span>
+        </div>
+        <div class="header-right">
+          <span class="page-title" data-i18n="page-title">Settings</span>
+          <button type="button" id="lang-toggle" class="lang-toggle" aria-label="Switch language">
+            <span class="lang-opt" data-lang="english">EN</span>
+            <span class="lang-sep">/</span>
+            <span class="lang-opt" data-lang="traditional-chinese">繁中</span>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <form id="settings-form" novalidate>
+
+          <div class="grid-2">
+
+            <section class="card">
+              <div class="card-header">
+                <h2 data-i18n="github-section">GitHub</h2>
+              </div>
+              <div class="card-body">
+                <div class="field">
+                  <label for="github-token" data-i18n="github-token-label">Personal Access Token</label>
+                  <p class="hint">
+                    <span data-i18n="github-hint">Scope required:</span> <code>repo</code> ·
+                    <a href="https://github.com/settings/tokens/new?scopes=repo&description=PR+Commentor" target="_blank" rel="noopener" data-i18n="create-token-link">Create token →</a>
+                  </p>
+                  <div class="input-reveal">
+                    <input type="password" id="github-token" name="githubToken" placeholder="ghp_…" autocomplete="off" />
+                    <button type="button" class="reveal-btn" aria-label="Toggle visibility" data-target="github-token"></button>
+                  </div>
+                  <div class="callout">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm9 3a1 1 0 11-2 0 1 1 0 012 0zm-.25-6.25a.75.75 0 00-1.5 0v3.5a.75.75 0 001.5 0v-3.5z" fill="currentColor"/>
+                    </svg>
+                    <p data-i18n="callout-text">Classic token recommended — Fine-grained tokens require org admin approval. Classic tokens work immediately.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="card">
+              <div class="card-header">
+                <h2 data-i18n="ai-section">AI Provider</h2>
+              </div>
+              <div class="card-body">
+                <div class="field">
+                  <label data-i18n="provider-label">Provider</label>
+                  <div class="provider-group">
+                    <label class="provider-option">
+                      <input type="radio" name="aiProvider" value="claude" />
+                      <span class="provider-label">
+                        <span class="provider-name">Claude</span>
+                        <span class="provider-sub">Anthropic</span>
+                      </span>
+                    </label>
+                    <label class="provider-option">
+                      <input type="radio" name="aiProvider" value="openai" />
+                      <span class="provider-label">
+                        <span class="provider-name">GPT</span>
+                        <span class="provider-sub">OpenAI</span>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="ai-api-key" data-i18n="api-key-label">API Key</label>
+                  <div class="input-reveal">
+                    <input type="password" id="ai-api-key" name="aiApiKey" placeholder="sk-ant-… or sk-…" autocomplete="off" />
+                    <button type="button" class="reveal-btn" aria-label="Toggle visibility" data-target="ai-api-key"></button>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="ai-model" data-i18n="model-label">Model</label>
+                  <p class="hint" id="model-hint"></p>
+                  <div class="input-with-btn">
+                    <input type="text" id="ai-model" name="aiModel" autocomplete="off" list="model-suggestions" />
+                    <button type="button" id="scan-models-btn" class="btn-secondary btn-secondary--icon" aria-label="Scan available models" title="Scan available models">
+                      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M2 8a6 6 0 1 1 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M2 11V8H5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span data-i18n="scan-btn">Scan</span>
+                    </button>
+                    <datalist id="model-suggestions"></datalist>
+                  </div>
+                  <p class="hint" id="scan-result"></p>
+                </div>
+                <div class="field field--test">
+                  <button type="button" id="test-conn-btn" class="btn-secondary" data-i18n="test-conn-btn">Test Connection</button>
+                  <span id="test-conn-result" class="test-result"></span>
+                </div>
+              </div>
+            </section>
+
+          </div>
+
+          <section class="card">
+            <div class="card-header">
+              <h2 data-i18n="output-section">Output</h2>
+            </div>
+            <div class="card-body">
+              <div class="grid-2 grid-2--sm">
+                <div class="field">
+                  <label data-i18n="style-label">Style</label>
+                  <div class="style-group">
+                    <label class="style-option">
+                      <input type="radio" name="outputStyle" value="summary" />
+                      <span class="style-label">
+                        <span class="style-title" data-i18n="summary-title">PR Summary</span>
+                        <span class="style-desc" data-i18n="summary-desc">Overall summary covering all commits and testing notes</span>
+                      </span>
+                    </label>
+                    <label class="style-option">
+                      <input type="radio" name="outputStyle" value="per-commit" />
+                      <span class="style-label">
+                        <span class="style-title" data-i18n="per-commit-title">Per-commit</span>
+                        <span class="style-desc" data-i18n="per-commit-desc">Explain what each commit does, one by one</span>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="response-language" data-i18n="response-language-label">Output Language</label>
+                  <select id="response-language" name="responseLanguage">
+                    <option value="english">English</option>
+                    <option value="traditional-chinese">繁體中文</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field">
+                <label for="prefix-prompt" data-i18n="custom-instructions-label">Custom Instructions</label>
+                <p class="hint" data-i18n="custom-instructions-hint">Prepended to every prompt. Enforce conventions, format, or review focus areas.</p>
+                <textarea id="prefix-prompt" name="prefixPrompt" rows="5"
+                  data-i18n-placeholder="custom-instructions-placeholder"
+                  placeholder="e.g. Always flag missing tests. Focus on security implications."></textarea>
+              </div>
+            </div>
+          </section>
+
+          <div class="actions">
+            <button type="submit" id="save-btn" data-i18n="save-btn">Save settings</button>
+            <span id="status-msg" class="status-msg" aria-live="polite"></span>
+          </div>
+
+        </form>
+      </main>
+    </div>
+    <script type="module" src="./index.ts"></script>
+  </body>
+</html>
