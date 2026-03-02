@@ -1,6 +1,10 @@
 # PR Commentor
 
+[繁體中文](./documents/README.zh-TW.md) | English
+
 > AI-powered PR summaries and titles, generated directly inside GitHub — no copy-pasting required.
+
+![PR Commentor](./documents/pr-commentor.jpg)
 
 PR Commentor injects a **Generate Summary** button into every GitHub pull request comment box and a **Generate Title** button next to the PR title field. One click fetches the full diff and commit history from the GitHub API, sends it to your chosen AI model, and inserts the result straight into the text area — ready to submit.
 
@@ -92,6 +96,8 @@ npm run build
 
 The settings page opens automatically on first install. You can reopen it anytime by clicking the extension icon.
 
+![Settings page — GitHub token and AI provider](./documents/pr-commentor3.jpg)
+
 ### 1. GitHub Personal Access Token
 
 Required to read PR data via the GitHub API.
@@ -116,6 +122,8 @@ Click **Test Connection** to confirm everything is working.
 
 ### 3. Output Preferences
 
+![Settings page — Output style, language, and custom instructions](./documents/pr-commentor4.jpg)
+
 | Setting | Options |
 |---|---|
 | Style | PR Summary · Per-commit |
@@ -127,6 +135,8 @@ Click **Save settings** when done.
 ---
 
 ## Usage
+
+![Generate Title and Generate Summary buttons in the GitHub PR UI](./documents/pr-commentor2.jpg)
 
 ### Generate a PR Summary
 
