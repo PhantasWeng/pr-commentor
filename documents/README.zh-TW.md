@@ -10,13 +10,7 @@ PR Commentor 在每個 GitHub Pull Request 的留言工具列中注入 **Generat
 
 ---
 
-## Chrome Web Store 上架說明
-
-### 簡短說明 *（≤ 132 字元）*
-
-```
-在 GitHub 留言框內直接生成 AI PR 摘要與標題，支援 Claude 與 OpenAI。
-```
+## Chrome Web Store
 
 ### 詳細說明
 

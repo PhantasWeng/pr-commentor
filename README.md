@@ -10,13 +10,7 @@ PR Commentor injects a **Generate Summary** button into every GitHub pull reques
 
 ---
 
-## Chrome Web Store Listing
-
-### Short Description *(≤ 132 characters)*
-
-```
-Generate AI-powered PR summaries and titles directly inside GitHub comment boxes. Supports Claude and OpenAI.
-```
+## Chrome Web Store
 
 ### Detailed Description
 
