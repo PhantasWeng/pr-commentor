@@ -1,6 +1,6 @@
 {
   "name": "pr-commentor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Chrome extension to generate AI-powered PR summaries on GitHub",
   "type": "module",
   "scripts": {
