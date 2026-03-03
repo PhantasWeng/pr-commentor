@@ -19,11 +19,13 @@
         </div>
         <div class="header-right">
           <span class="page-title" data-i18n="page-title">Settings</span>
-          <button type="button" id="lang-toggle" class="lang-toggle" aria-label="Switch language">
-            <span class="lang-opt" data-lang="english">EN</span>
-            <span class="lang-sep">/</span>
-            <span class="lang-opt" data-lang="traditional-chinese">繁中</span>
-          </button>
+          <div class="ui-lang">
+            <button type="button" id="ui-lang-button" class="ui-lang-button" aria-haspopup="true" aria-expanded="false">
+              <span class="ui-lang-label" data-i18n="ui-language-label">UI Language</span>
+              <span class="ui-lang-value" id="ui-lang-value">English</span>
+            </button>
+            <div id="ui-lang-panel" class="ui-lang-panel" role="menu" aria-label="UI language options"></div>
+          </div>
         </div>
       </header>
 
@@ -143,6 +145,20 @@
                   <select id="response-language" name="responseLanguage">
                     <option value="english">English</option>
                     <option value="traditional-chinese">繁體中文</option>
+                    <option value="simplified-chinese">简体中文</option>
+                    <option value="japanese">日本語</option>
+                    <option value="korean">한국어</option>
+                    <option value="spanish">Español</option>
+                    <option value="portuguese">Português</option>
+                    <option value="french">Français</option>
+                    <option value="german">Deutsch</option>
+                    <option value="italian">Italiano</option>
+                    <option value="russian">Русский</option>
+                    <option value="thai">ไทย</option>
+                    <option value="vietnamese">Tiếng Việt</option>
+                    <option value="indonesian">Bahasa Indonesia</option>
+                    <option value="turkish">Türkçe</option>
+                    <option value="dutch">Nederlands</option>
                   </select>
                 </div>
               </div>
@@ -160,6 +176,53 @@
             <button type="submit" id="save-btn" data-i18n="save-btn">Save settings</button>
             <span id="status-msg" class="status-msg" aria-live="polite"></span>
           </div>
+
+          <section class="card project-info-card">
+            <div class="card-header">
+              <h2>Project Info</h2>
+            </div>
+            <div class="card-body">
+              <p class="project-info-intro">Quick links to install, inspect source, and contact the maintainer.</p>
+              <div class="project-link-grid">
+                <a class="project-link-card" href="https://chromewebstore.google.com/detail/pr-commentor/oeeinalbokfbkelchgmkpabjohggnppl" target="_blank" rel="noopener">
+                  <span class="project-link-icon project-link-icon--store" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path fill="currentColor" d="M19 6h-2c0-2.8-2.2-5-5-5S7 3.2 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2m-7-3c1.7 0 3 1.3 3 3H9c0-1.7 1.3-3 3-3m7 17H5V8h14zm-7-8c-1.7 0-3-1.3-3-3H7c0 2.8 2.2 5 5 5s5-2.2 5-5h-2c0 1.7-1.3 3-3 3"/>
+                    </svg>
+                  </span>
+                  <span class="project-link-meta">
+                    <span class="project-link-label">Chrome Web Store</span>
+                    <span class="project-link-url">Install PR Commentor</span>
+                  </span>
+                  <span class="project-link-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-link-card" href="https://github.com/PhantasWeng/pr-commentor" target="_blank" rel="noopener">
+                  <span class="project-link-icon project-link-icon--repo" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/>
+                    </svg>
+                  </span>
+                  <span class="project-link-meta">
+                    <span class="project-link-label">GitHub Repo</span>
+                    <span class="project-link-url">github.com/PhantasWeng/pr-commentor</span>
+                  </span>
+                  <span class="project-link-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="project-link-card" href="https://github.com/PhantasWeng" target="_blank" rel="noopener">
+                  <span class="project-link-icon project-link-icon--author" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2M7.07 18.28c.43-.9 3.05-1.78 4.93-1.78s4.5.88 4.93 1.78A7.9 7.9 0 0 1 12 20c-1.86 0-3.57-.64-4.93-1.72m11.29-1.45c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33A7.93 7.93 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.5-1.64 4.83M12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6m0 5a1.5 1.5 0 0 1-1.5-1.5A1.5 1.5 0 0 1 12 8a1.5 1.5 0 0 1 1.5 1.5A1.5 1.5 0 0 1 12 11"/>
+                    </svg>
+                  </span>
+                  <span class="project-link-meta">
+                    <span class="project-link-label">Author GitHub</span>
+                    <span class="project-link-url">@PhantasWeng</span>
+                  </span>
+                  <span class="project-link-arrow" aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+          </section>
 
         </form>
       </main>
