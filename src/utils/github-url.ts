@@ -24,7 +24,23 @@ export interface CompareInfo {
 }
 
 export function parseCompareUrl(url: string): CompareInfo | null {
-  const m = url.match(/github\.com\/([^/]+)\/([^/]+)\/compare\/([^/.]+(?:\.[^/.]+)*)\.\.\.([^/?#]+)/)
-  if (!m) return null
-  return { owner: m[1], repo: m[2], base: m[3], head: m[4] }
+  try {
+    const u = new URL(url)
+    if (u.hostname !== 'github.com') return null
+
+    const m = u.pathname.match(/^\/([^/]+)\/([^/]+)\/compare\/(.+)$/)
+    if (!m) return null
+
+    const compareSpec = m[3]
+    const sep = compareSpec.indexOf('...')
+    if (sep === -1) return null
+
+    const base = decodeURIComponent(compareSpec.slice(0, sep))
+    const head = decodeURIComponent(compareSpec.slice(sep + 3))
+    if (!base || !head) return null
+
+    return { owner: m[1], repo: m[2], base, head }
+  } catch {
+    return null
+  }
 }

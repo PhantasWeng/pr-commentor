@@ -3,6 +3,10 @@ import { GitHubPR, GitHubCommit, GitHubFile } from '../types/github'
 import { OutputStyle } from '../types/settings'
 import { getSettings } from '../utils/storage'
 
+function buildCompareApiUrl(owner: string, repo: string, base: string, head: string): string {
+  return `https://api.github.com/repos/${owner}/${repo}/compare/${encodeURIComponent(base)}...${encodeURIComponent(head)}`
+}
+
 chrome.runtime.onInstalled.addListener(() => {
   chrome.runtime.openOptionsPage()
 })
@@ -65,7 +69,7 @@ async function handleGenerateSummary(payload: {
       fetchAllFiles(baseUrl, headers),
     ])
   } else if (base !== undefined && head !== undefined) {
-    const compareUrl = `https://api.github.com/repos/${owner}/${repo}/compare/${base}...${head}`
+    const compareUrl = buildCompareApiUrl(owner, repo, base, head)
     console.log('[PR Commentor] Fetching compare:', compareUrl)
     const response = await fetch(compareUrl, { headers })
     await throwIfNotOk(response)
@@ -276,7 +280,7 @@ async function handleGenerateTitle(payload: GenerateTitlePayload): Promise<strin
     files = fetchedFiles
     headBranch = pr.head.ref
   } else if (base !== undefined && head !== undefined) {
-    const compareUrl = `https://api.github.com/repos/${owner}/${repo}/compare/${base}...${head}`
+    const compareUrl = buildCompareApiUrl(owner, repo, base, head)
     const response = await fetch(compareUrl, { headers })
     await throwIfNotOk(response)
     const data = (await response.json()) as { commits: GitHubCommit[]; files?: GitHubFile[] }
