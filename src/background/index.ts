@@ -1,10 +1,48 @@
 import { ExtensionMessage, MessageResponse, GenerateTitlePayload } from '../types/messages'
 import { GitHubPR, GitHubCommit, GitHubFile } from '../types/github'
-import { OutputStyle } from '../types/settings'
+import { OutputStyle, ResponseLanguage } from '../types/settings'
 import { getSettings } from '../utils/storage'
 
 function buildCompareApiUrl(owner: string, repo: string, base: string, head: string): string {
   return `https://api.github.com/repos/${owner}/${repo}/compare/${encodeURIComponent(base)}...${encodeURIComponent(head)}`
+}
+
+function getLanguageInstruction(language: ResponseLanguage): string {
+  switch (language) {
+    case 'traditional-chinese':
+      return 'Please write the output in Traditional Chinese (繁體中文).'
+    case 'simplified-chinese':
+      return 'Please write the output in Simplified Chinese (简体中文).'
+    case 'japanese':
+      return 'Please write the output in Japanese (日本語).'
+    case 'korean':
+      return 'Please write the output in Korean (한국어).'
+    case 'spanish':
+      return 'Please write the output in Spanish (Español).'
+    case 'portuguese':
+      return 'Please write the output in Portuguese (Português).'
+    case 'french':
+      return 'Please write the output in French (Français).'
+    case 'german':
+      return 'Please write the output in German (Deutsch).'
+    case 'italian':
+      return 'Please write the output in Italian (Italiano).'
+    case 'russian':
+      return 'Please write the output in Russian (Русский).'
+    case 'thai':
+      return 'Please write the output in Thai (ไทย).'
+    case 'vietnamese':
+      return 'Please write the output in Vietnamese (Tiếng Việt).'
+    case 'indonesian':
+      return 'Please write the output in Indonesian (Bahasa Indonesia).'
+    case 'turkish':
+      return 'Please write the output in Turkish (Türkçe).'
+    case 'dutch':
+      return 'Please write the output in Dutch (Nederlands).'
+    case 'english':
+    default:
+      return 'Please write the output in English.'
+  }
 }
 
 chrome.runtime.onInstalled.addListener(() => {
@@ -161,15 +199,12 @@ function buildPrompt(
   pr: GitHubPR | null,
   commits: GitHubCommit[],
   files: GitHubFile[],
-  language: string,
+  language: ResponseLanguage,
   outputStyle: OutputStyle,
   prefixPrompt: string,
   branchInfo?: { base: string; head: string }
 ): string {
-  const languageInstruction =
-    language === 'traditional-chinese'
-      ? 'Please write the output in Traditional Chinese (繁體中文).'
-      : 'Please write the output in English.'
+  const languageInstruction = getLanguageInstruction(language)
 
   const customInstructions = prefixPrompt
     ? `## Custom Instructions\n${prefixPrompt}\n\n`
@@ -304,13 +339,10 @@ function buildTitlePrompt(
   commits: GitHubCommit[],
   files: GitHubFile[],
   headBranch: string,
-  language: string,
+  language: ResponseLanguage,
   prefixPrompt: string
 ): string {
-  const languageInstruction =
-    language === 'traditional-chinese'
-      ? 'Please write the output in Traditional Chinese (繁體中文).'
-      : 'Please write the output in English.'
+  const languageInstruction = getLanguageInstruction(language)
 
   const customInstructions = prefixPrompt
     ? `## Custom Instructions\n${prefixPrompt}\n\n`

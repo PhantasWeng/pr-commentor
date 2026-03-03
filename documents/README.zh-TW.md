@@ -70,6 +70,7 @@ GitHub Token 與 AI API 金鑰僅儲存於 Chrome 的加密同步儲存空間，
 ### 從 Chrome Web Store 安裝 *（建議）*
 
 在 [Chrome Web Store](https://chromewebstore.google.com) 搜尋 **PR Commentor**，點擊 **加到 Chrome**。
+直接安裝連結：[Chrome Web Store 的 PR Commentor 頁面](https://chromewebstore.google.com/detail/pr-commentor/oeeinalbokfbkelchgmkpabjohggnppl)。
 
 ### 手動安裝（unpacked）
 

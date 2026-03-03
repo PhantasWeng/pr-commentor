@@ -70,6 +70,7 @@ Your GitHub token and AI API key are stored only in Chrome's encrypted sync stor
 ### From Chrome Web Store *(recommended)*
 
 Search for **PR Commentor** in the [Chrome Web Store](https://chromewebstore.google.com) and click **Add to Chrome**.
+Direct install link: [PR Commentor on Chrome Web Store](https://chromewebstore.google.com/detail/pr-commentor/oeeinalbokfbkelchgmkpabjohggnppl).
 
 ### Manual (unpacked)
 
